@@ -1,7 +1,6 @@
+import { Component } from '@angular/core';
 import { Flight } from './../entities/flight';
-import { Component, Pipe } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { FlightService } from './flight.service';
 
 
 /* @Pipe({
@@ -25,24 +24,16 @@ export class FlightSearchComponent {
   flights: Flight[] = [];
   selectedFlight: Flight | undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private flightService: FlightService) {}
 
   search(): void {
-    const url = 'https://demo.angulararchitects.io/api/flight';
-
-    const params = new HttpParams()
-      .set('from', this.from)
-      .set('to', this.to);
-
-    const headers = new HttpHeaders()
-      .set('Accept', 'application/json');
-
-    this.http
-      .get<Flight[]>(url, { params, headers })
-      .pipe(tap(console.log))
-      .subscribe(
-        flights => this.flights = flights
-      );
+    this.flightService
+      .find(this.from, this.to)
+      .subscribe({
+        next: flights => this.flights = flights,
+        error: err => console.error(err),
+        complete: () => console.log('No futher stream events.')
+      });
   }
 
   select(flight: Flight): void {
