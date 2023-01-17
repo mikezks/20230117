@@ -51,3 +51,9 @@
     </tbody>
   </table>
 </div>
+
+<div class="card" *ngIf="selectedFlight">
+  <div class="card-body">
+    <pre>{{ selectedFlight | json }}</pre>
+  </div>
+</div>
