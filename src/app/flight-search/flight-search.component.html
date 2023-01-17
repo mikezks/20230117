@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Flight Search</h2>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="from-group">
+        <label>From:</label>
+        <input [(ngModel)]="from" name="from" class="form-control" />
+      </div>
+      <div class="from-group">
+        <label>To:</label>
+        <input [(ngModel)]="to" name="to" class="form-control" />
+      </div>
+      <div class="from-group">
+        <button class="btn btn-default" (click)="search()">Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card" *ngIf="flights.length">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let flight of flights"
+        [class.table-active]="selectedFlight === flight"
+      >
+        <td>{{ flight.id }}</td>
+        <td>{{ flight.from }}</td>
+        <td>{{ flight.to }}</td>
+        <td>{{ flight.date | date:'dd.MM.yyyy HH:mm' }}</td>
+        <td>
+          <button
+            class="btn btn-info btn-sm" style="min-width: 85px"
+            (click)="select(flight)"
+          >
+            {{ selectedFlight === flight ? 'Remove' : 'Select' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
