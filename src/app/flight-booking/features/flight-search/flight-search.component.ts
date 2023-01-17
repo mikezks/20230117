@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { Flight } from './../entities/flight';
-import { DefaultFlightService } from './default-flight.service';
-import { FlightService } from './flight.service';
+import { Component } from '@angular/core';
+import { Flight } from '../../../entities/flight';
+import { FlightService } from '../../data-access/flight.service';
 
 
 /* @Pipe({
@@ -19,10 +18,10 @@ export class DatePipe {
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
   providers: [
-    {
+    /* {
       provide: FlightService,
       useClass: DefaultFlightService
-    }
+    } */
   ]
 })
 export class FlightSearchComponent {
