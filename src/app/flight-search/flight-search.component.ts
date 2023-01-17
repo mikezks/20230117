@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Flight } from './../entities/flight';
 import { FlightService } from './flight.service';
 
@@ -23,6 +23,7 @@ export class FlightSearchComponent {
   to: string = 'Graz';
   flights: Flight[] = [];
   selectedFlight: Flight | undefined;
+  // flightService = inject(FlightService);
 
   constructor(private flightService: FlightService) {}
 
