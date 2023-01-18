@@ -4,13 +4,15 @@ import { SharedModule } from '../shared/shared.module';
 import { FlightSearchComponent } from './features/flight-search/flight-search.component';
 import { FlightCardComponent } from './ui/flight-card/flight-card.component';
 import { StatusToggleComponent } from './ui/status-toggle/status-toggle.component';
+import { FlightEditComponent } from './features/flight-edit/flight-edit.component';
 
 
 @NgModule({
   declarations: [
     FlightSearchComponent,
     FlightCardComponent,
-    StatusToggleComponent
+    StatusToggleComponent,
+    FlightEditComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { StatusToggleComponent } from './ui/status-toggle/status-toggle.componen
     SharedModule
   ],
   exports: [
-    FlightSearchComponent
+    FlightSearchComponent,
+    FlightEditComponent
   ]
 })
 export class FlightBookingModule { }
