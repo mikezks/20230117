@@ -3,11 +3,38 @@
     <h2 class="card-title">Flight Search</h2>
   </div>
   <div class="card-body">
-    <form>
+    <form #searchForm="ngForm">
       <div class="from-group">
         <label>From:</label>
-        <input [(ngModel)]="from" name="from" class="form-control" />
+        <input
+          [(ngModel)]="from" name="from"
+          class="form-control"
+          required minlength="3" />
       </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="searchForm?.controls?.['from']?.invalid"
+      >
+        The From input is not valid currently.
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="searchForm?.controls?.['from']?.hasError('required')"
+      >
+        The From input is mandatory, please enter a value.
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="searchForm?.controls?.['from']?.hasError('minlength')"
+      >
+        Please enter at least {{
+          searchForm?.controls?.['from']?.errors?.['minlength'].requiredLength
+        }} chars.
+      </div>
+      <div *ngIf="searchForm?.controls?.['from']?.errors">
+        <pre>{{ searchForm?.controls?.['from']?.errors | json }}</pre>
+      </div>
+
       <div class="from-group">
         <label>To:</label>
         <input [(ngModel)]="to" name="to" class="form-control" />
@@ -15,7 +42,7 @@
       <div class="from-group">
         <button
           class="btn btn-default"
-          [disabled]="!from || !to"
+          [disabled]="searchForm?.invalid"
           (click)="search()">Search</button>
       </div>
     </form>
