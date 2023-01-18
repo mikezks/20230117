@@ -15,4 +15,10 @@ export class FlightCardComponent {
     this.selected = !this.selected;
     this.selectedChange.emit(this.selected);
   }
+
+  updateDelayed(status = false) {
+    if (this.item) {
+      this.item.delayed = status;
+    }
+  }
 }
