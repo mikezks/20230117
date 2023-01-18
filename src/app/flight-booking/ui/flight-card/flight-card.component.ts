@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Flight } from '../../../entities/flight';
 
 @Component({
@@ -9,8 +9,10 @@ import { Flight } from '../../../entities/flight';
 export class FlightCardComponent {
   @Input() item: Flight | undefined;
   @Input() selected = false;
+  @Output() selectedChange = new EventEmitter<boolean>();
 
   toggleSelection(): void {
-    this.selected = !this.selected
+    this.selected = !this.selected;
+    this.selectedChange.emit(this.selected);
   }
 }
