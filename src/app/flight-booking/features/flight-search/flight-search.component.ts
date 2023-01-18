@@ -3,33 +3,19 @@ import { Flight } from '../../../entities/flight';
 import { FlightService } from '../../data-access/flight.service';
 
 
-/* @Pipe({
-  name: 'date'
-})
-export class DatePipe {
-  transform(value: string, parsingFormat: string): string {
-    return value + '-my-additionl-value';
-  }
-} */
-
-
 @Component({
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
-  styleUrls: ['./flight-search.component.css'],
-  providers: [
-    /* {
-      provide: FlightService,
-      useClass: DefaultFlightService
-    } */
-  ]
+  styleUrls: ['./flight-search.component.css']
 })
 export class FlightSearchComponent {
   from = 'Hamburg';
   to: string = 'Graz';
   flights: Flight[] = [];
-  selectedFlight: Flight | undefined;
-  // flightService = inject(FlightService);
+  basket: Record<number, boolean> = {
+    3: true,
+    5: true
+  };
 
   constructor(private flightService: FlightService) {}
 
@@ -39,11 +25,7 @@ export class FlightSearchComponent {
       .subscribe({
         next: flights => this.flights = flights,
         error: err => console.error(err),
-        complete: () => console.log('No futher stream events.')
+        complete: () => console.log('No further stream events.')
       });
-  }
-
-  select(flight: Flight): void {
-    this.selectedFlight = (flight === this.selectedFlight ? undefined : flight);
   }
 }

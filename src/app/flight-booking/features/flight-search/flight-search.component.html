@@ -13,47 +13,31 @@
         <input [(ngModel)]="to" name="to" class="form-control" />
       </div>
       <div class="from-group">
-        <button class="btn btn-default" (click)="search()">Search</button>
+        <button
+          class="btn btn-default"
+          [disabled]="!from || !to"
+          (click)="search()">Search</button>
       </div>
     </form>
   </div>
 </div>
 
-<div class="card" *ngIf="flights.length">
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let flight of flights"
-        [class.table-active]="selectedFlight === flight"
-      >
-        <td>{{ flight.id }}</td>
-        <td>{{ flight.from | city }}</td>
-        <td>{{ flight.to }}</td>
-        <td>{{ flight.date | date:'dd.MM.yyyy HH:mm' }}</td>
-        <td>
-          <button
-            class="btn btn-info btn-sm" style="min-width: 85px"
-            (click)="select(flight)"
-          >
-            {{ selectedFlight === flight ? 'Remove' : 'Select' }}
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="row">
+  <div
+    *ngFor="let flight of flights"
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+
+    <app-flight-card
+      [item]="flight"
+      [selected]="basket[flight.id]"
+    >
+    </app-flight-card>
+
+  </div>
 </div>
 
-<div class="card" *ngIf="selectedFlight">
+<div class="card">
   <div class="card-body">
-    <pre>{{ selectedFlight | json }}</pre>
+    <pre>{{ basket | json }}</pre>
   </div>
 </div>
