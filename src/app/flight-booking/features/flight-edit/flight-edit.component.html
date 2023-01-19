@@ -70,10 +70,10 @@
         <input formControlName="date" class="form-control" />
       </div>
 
-      <div class="from-group">
+      <div class="form-group">
         <button
           class="btn btn-default"
-          [disabled]="editForm.invalid"
+          [disabled]="!editForm.valid"
           (click)="save()">Save</button>
       </div>
     </form>

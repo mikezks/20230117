@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
     <form #searchForm="ngForm">
-      <div class="from-group">
+      <div class="form-group">
         <label>From:</label>
         <input
           [(ngModel)]="from" name="from"
@@ -35,11 +35,11 @@
         <pre>{{ searchForm?.controls?.['from']?.errors | json }}</pre>
       </div>
 
-      <div class="from-group">
+      <div class="form-group">
         <label>To:</label>
         <input [(ngModel)]="to" name="to" class="form-control" />
       </div>
-      <div class="from-group">
+      <div class="form-group">
         <button
           class="btn btn-default"
           [disabled]="searchForm?.invalid"
