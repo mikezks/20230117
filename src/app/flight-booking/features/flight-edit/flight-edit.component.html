@@ -33,6 +33,13 @@
           editForm.controls.from.errors?.['minlength'].requiredLength
         }} chars.
       </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="editForm.controls.from.hasError('city')"
+      >
+        Please choose one of the valid cities:<br>
+        {{ editForm.controls.from.errors?.['city'].validCities.join(', ') }}
+      </div>
       <div *ngIf="editForm.controls.from.errors">
         <pre>{{ editForm.controls.from.errors | json }}</pre>
       </div>
@@ -60,6 +67,13 @@
         Please enter at least {{
           editForm.controls.to.errors?.['minlength'].requiredLength
         }} chars.
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="editForm.controls.to.hasError('city')"
+      >
+        Please choose one of the valid cities:<br>
+        {{ editForm.controls.to.errors?.['city'].validCities.join(', ') }}
       </div>
       <div *ngIf="editForm.controls.to.errors">
         <pre>{{ editForm.controls.to.errors | json }}</pre>
