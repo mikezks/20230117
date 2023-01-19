@@ -11,18 +11,16 @@ import { FlightBookingComponent } from './flight-booking.component';
 
 
 @NgModule({
-  declarations: [
-    FlightSearchComponent,
-    FlightCardComponent,
-    StatusToggleComponent,
-    FlightEditComponent,
-    FlightBookingComponent
-  ],
-  imports: [
-    CommonModule,
-    FlightBookingRoutingModule,
-
-    SharedModule
-  ]
+    declarations: [
+        FlightSearchComponent,
+        FlightEditComponent,
+        FlightBookingComponent
+    ],
+    imports: [
+        CommonModule,
+        FlightBookingRoutingModule,
+        SharedModule,
+        FlightCardComponent
+    ]
 })
 export class FlightBookingModule { }

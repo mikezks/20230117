@@ -1,9 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-status-toggle',
-  templateUrl: './status-toggle.component.html',
-  styleUrls: ['./status-toggle.component.css']
+  template: `
+    Delayed: <button
+      class="btn btn-info btn-sm"
+      (click)="toggleStatus()"
+      style="cursor: pointer;"
+    >{{ status }}</button>
+  `
 })
 export class StatusToggleComponent {
   @Input() status = false;

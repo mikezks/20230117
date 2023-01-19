@@ -1,10 +1,20 @@
+import { RouterLinkWithHref } from '@angular/router';
+import { CommonModule, NgStyle, DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core';
 import { Flight } from '../../../entities/flight';
+import { StatusToggleComponent } from "../status-toggle/status-toggle.component";
 
 @Component({
-  selector: 'app-flight-card',
-  templateUrl: './flight-card.component.html',
-  styleUrls: ['./flight-card.component.css']
+    standalone: true,
+    selector: 'app-flight-card',
+    templateUrl: './flight-card.component.html',
+    styleUrls: ['./flight-card.component.css'],
+    imports: [
+      NgStyle,
+      DatePipe,
+      RouterLinkWithHref,
+      StatusToggleComponent
+    ]
 })
 export class FlightCardComponent implements OnInit, OnDestroy {
 
