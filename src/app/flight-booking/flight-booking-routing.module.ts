@@ -1,3 +1,4 @@
+import { FlightBookingComponent } from './flight-booking.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FlightEditComponent } from './features/flight-edit/flight-edit.component';
@@ -6,6 +7,7 @@ import { FlightSearchComponent } from './features/flight-search/flight-search.co
 const routes: Routes = [
   {
     path: 'flight-booking',
+    component: FlightBookingComponent,
     children: [
       {
         path: '',
