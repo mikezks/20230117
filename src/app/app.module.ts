@@ -5,11 +5,14 @@ import { CoreModule } from './core/core.module';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
 
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTES } from './app.routes';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
+    RouterModule.forRoot(APP_ROUTES),
 
     CoreModule,
     FlightBookingModule
