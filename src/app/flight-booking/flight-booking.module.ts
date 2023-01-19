@@ -6,6 +6,7 @@ import { FlightSearchComponent } from './features/flight-search/flight-search.co
 import { FlightCardComponent } from './ui/flight-card/flight-card.component';
 import { StatusToggleComponent } from './ui/status-toggle/status-toggle.component';
 import { FlightEditComponent } from './features/flight-edit/flight-edit.component';
+import { FlightBookingRoutingModule } from './flight-booking-routing.module';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { FlightEditComponent } from './features/flight-edit/flight-edit.componen
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    FlightBookingRoutingModule,
 
     SharedModule
   ]
